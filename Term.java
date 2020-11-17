@@ -38,7 +38,12 @@ public class Term {
 
     // Compares the two terms in descending order by weight.
     public static Comparator<Term> byReverseWeightOrder() {
-        return Comparator.comparing(Term::getWeight);
+        return new Comparator<Term>() {
+            @Override
+            public int compare(Term o1, Term o2) {
+                return -Long.compare(o1.getWeight(), o2.getWeight());
+            }
+        };
     }
 
     // Compares the two terms in case-insensitive lexicographic order,

@@ -23,8 +23,11 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 
+
 class AutocompleteCLI {
     public static void main(String[] args) {
+       //String[] args2 = {"dictionaries/cities.txt", "7"};
+
         try {
             // Read the command-line arguments
             String dictfile = args[0];
