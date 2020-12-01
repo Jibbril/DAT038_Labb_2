@@ -11,18 +11,16 @@ public class RangeBinarySearch {
         int high = terms.length - 1;
         int returnIndex = -1;
 
-        while (low < high) {
+        while (low <= high) {
             int middle = (low + high) / 2;
 
-            if (comparator.compare(key, terms[middle]) < 0){
+            if (comparator.compare(key, terms[middle]) < 0) {
                 high = middle - 1;
-            }
-
-            else if (comparator.compare(key, terms[middle]) > 0) {
+            } else if (comparator.compare(key, terms[middle]) > 0) {
                 low = middle + 1;
             } else {
                 returnIndex = middle;
-                high = middle;
+                high = middle - 1;
             }
         }
         return returnIndex;
@@ -36,18 +34,16 @@ public class RangeBinarySearch {
         int high = terms.length - 1;
         int returnIndex = -1;
 
-        while (low < high) {
+        while (low <= high) {
             int middle = (low + high + 1) / 2;
 
-            if (comparator.compare(key, terms[middle]) < 0){
+            if (comparator.compare(key, terms[middle]) < 0) {
                 high = middle - 1;
-            }
-
-            else if (comparator.compare(key, terms[middle]) > 0) {
+            } else if (comparator.compare(key, terms[middle]) > 0) {
                 low = middle + 1;
             } else {
                 returnIndex = middle;
-                low = middle;
+                low = middle + 1;
             }
         }
         return returnIndex;

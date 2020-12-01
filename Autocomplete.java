@@ -22,7 +22,10 @@ public class Autocomplete {
     // Complexity: O(log N + M log M), where M is the number of matching terms
     public Term[] allMatches(String prefix) {
         int firstIndex = RangeBinarySearch.firstIndexOf(this.dictionary, new Term(prefix, 0), Term.byPrefixOrder(prefix.length()));
-        int lastIndex = RangeBinarySearch.lastIndexOf(this.dictionary, new Term(prefix, 0), Term.byPrefixOrder(prefix.length()));
+        int lastIndex = -1;
+        if (firstIndex >= 0) {
+            lastIndex = RangeBinarySearch.lastIndexOf(this.dictionary, new Term(prefix, 0), Term.byPrefixOrder(prefix.length()));
+        }
 
         if (firstIndex >= 0 && lastIndex >= 0) {
             Term[] results = Arrays.copyOfRange(this.dictionary, firstIndex, lastIndex+1);
@@ -37,7 +40,10 @@ public class Autocomplete {
     // Complexity: O(log N)
     public int numberOfMatches(String prefix) {
         int firstIndex = RangeBinarySearch.firstIndexOf(this.dictionary, new Term(prefix, 0), Term.byPrefixOrder(prefix.length()));
-        int lastIndex = RangeBinarySearch.lastIndexOf(this.dictionary, new Term(prefix, 0), Term.byPrefixOrder(prefix.length()));
+        int lastIndex = -1;
+        if (firstIndex >= 0) {
+            lastIndex = RangeBinarySearch.lastIndexOf(this.dictionary, new Term(prefix, 0), Term.byPrefixOrder(prefix.length()));
+        }
 
         if (firstIndex < 0 || lastIndex < 0) {
             return 0;

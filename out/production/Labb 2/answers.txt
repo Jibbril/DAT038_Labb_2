@@ -66,7 +66,13 @@ this results in a complexity of O(2log(n)) = O(log(n)).
 ** B. Are there any known bugs / limitations?
 ******************************************************************************/
 
-Not to our knowledge.
+There is an issue with searching for cities containing the letters 'å' 'ä' 'ö'
+when using the AutocompleteCLI. If you for example input the prefix "Gö" in the
+terminal there will be no matches. However, if you enter it via the code directly
+in the file AutocompleteCLI.java then the code works as intended. We believe this
+might have something to do with the terminal not correctly comprehending or
+encoding the letters 'å' 'ä' 'ö' and thus the input into the program becomes
+incorrect.
 
 
 /******************************************************************************
